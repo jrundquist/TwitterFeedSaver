@@ -61,8 +61,8 @@ class Mapper{
 													VALUES (:id ,:url ,:name ,:full_name ,:place_type ,:country_code ,:country , :bb_x1 ,:bb_y1 ,:bb_x2 ,:bb_y2 ,:bb_x3 ,:bb_y3 ,:bb_x4 ,:bb_y4 ,:bb_type);";
 	const DB_INSERT_COORDINATES = "INSERT INTO `coordinates` ( `type`, `x`, `y` ) VALUES (:type, :x, :y);";
 	
-	const DB_INSERT_TWEET 		= "INSERT INTO `tweets` (`id`, `user_id`, `text`, `source`, `contributors`, `coordinates_id`, `geo_id`, `place_id`, `in_reply_to_user_id`, `in_reply_to_screen_name`, `in_reply_to_status_id`, `retweeted`, `retweet_count`, `truncated`, `favorited`, `created_at`) VALUES
-														(:id,  :user_id , :tweet, :source,  :contributors,  :coordinates, 	  :geo,     :place 	  , :in_reply_to_user_id , :in_reply_to_screen_name , :in_reply_to_status_id , :retweeted , :retweet_count , :truncated , :favorited , :created_at )
+	const DB_INSERT_TWEET 		= "INSERT INTO `tweets` (`id`, `user_id`, `text`, `source`, `contributors`, `coordinates_id`, `geo_id`, `place_id`, `in_reply_to_user_id`, `in_reply_to_screen_name`, `in_reply_to_status_id`, `retweeted`, `retweet_count`, `truncated`, `favorited`, `created_at`, `collected_on`) VALUES
+														(:id,  :user_id , :tweet, :source,  :contributors,  :coordinates, 	  :geo,     :place 	  , :in_reply_to_user_id , :in_reply_to_screen_name , :in_reply_to_status_id , :retweeted , :retweet_count , :truncated , :favorited , :created_at, NOW() )
 												ON DUPLICATE KEY UPDATE `retweeted` = :retweeted, `retweet_count` = :retweet_count, `favorited` = :favorited";
 	
 	public static function save(stdClass $j){
